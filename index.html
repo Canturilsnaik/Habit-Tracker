@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Habit Tracker</title>
 
-  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="container">
@@ -25,6 +25,17 @@
       <p>Chart ever</p>
     </section>
       
+    <div class="modal--goal modal-show">
+      <section class="modal--goal__card">
+        <figure class="modal--goal__figure">
+          <img class="figure__close" src="img/close_big.svg" alt="Close Modal">
+        </figure>
+        <h1 class="card__title">Add the goal:</h1>
+        <input class="card__field" type="text"/>
+        <button class="card__btn">Add</button>
+      </section>
+    </div>
+
     <section class="field">
       <div class="org">
         <ul class="field__list">
@@ -63,10 +74,10 @@
     </section>
   </div>
 
-  <!-- <footer class="footer">
+  <footer class="footer">
     <figure class="footer__fig">
       <img class="fig__img" src="img/Group 7.svg" alt="climber">
     </figure>
-  </footer> -->
+  </footer>
 </body>
 </html>

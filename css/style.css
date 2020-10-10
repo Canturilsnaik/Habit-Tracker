@@ -27,17 +27,80 @@ body {
   font-size: clamp(2rem, 10vw, 3.75rem);
   margin-bottom: 30px;
 }
-
+ 
 .modal {
   display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  width: 400px;
+}
+
+/* .modal--goal {
+  display: none;
+} */
+
+.modal--goal.modal-show{
+  background: rgba(0, 0, 0, 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+}
+
+.modal--goal__figure {
+  align-self: flex-start;
+  justify-content: flex-end;
+}
+
+.modal--goal__card {
+  background: #E9E9E9;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 45vh;
+  width: 500px;
+}
+
+.card__title {
+  font-size: clamp(2rem, 10vw, 3rem);
+  margin-bottom: 20px;
+}
+
+.card__field {
+  border-radius: 10px;
+  height: 30px;
+  width: calc(500px - 150px);
+}
+
+.card__btn {
+  background-color: #C4C4C4;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px 10px;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+.card__btn:hover{
+  box-shadow: #000 2px 2px 5px;
+}
+
+.card__btn:active {
+  box-shadow: inset #000 1px 1px 3px;
 }
 
 .field {
   background: #F2F2F2;
   display: flex;
   justify-content: center;
-  height: 520px;
   width: 492px;
+  z-index: 9;
 }
 
 .field__list {
@@ -55,12 +118,11 @@ body {
   justify-content: space-between;
   width: 432px;
   height: 88px;
-  margin-top: 37px;
+  margin: 15px 0 15px;
 }
 
 .fig__img{
   bottom: 0;
-  position: relative;
-  height: 317px;
+  position: absolute;
   max-width: 100%;
 }
