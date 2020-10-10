@@ -35,34 +35,42 @@ body {
   width: 400px;
 }
 
-/* .modal--goal {
+.modal__p {
+  cursor: pointer;
+}
+
+.modal--goal {
   display: none;
-} */
+}
 
 .modal--goal.modal-show{
+  align-items: center;
   background: rgba(0, 0, 0, 50%);
   display: flex;
   justify-content: center;
-  align-items: center;
   height: 100%;
-  width: 100%;
   position: absolute;
+  width: 100%;
   z-index: 10;
 }
 
 .modal--goal__figure {
-  align-self: flex-start;
-  justify-content: flex-end;
+  height: 312px;
+}
+
+.figure__close {
+  cursor: pointer; 
 }
 
 .modal--goal__card {
+  align-items: center;
   background: #E9E9E9;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   height: 45vh;
+  margin-left: 10px;
   width: 500px;
 }
 
