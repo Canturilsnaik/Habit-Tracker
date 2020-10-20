@@ -4,7 +4,12 @@ const modalGoal = document.querySelector('.modal--goal'),
       listGoal = document.querySelector('.field__list'),
       dateValue = document.querySelector('.date__value'),
       btnAdd = document.querySelector('.card__btn'),
-      itemAdd = document.querySelector('.card__field');
+      itemAdd = document.querySelector('.card__field'),
+      tasks = [];
+
+dateValue.addEventListener('change', () => {
+  renderTask();
+})
 
 addList.addEventListener('click', () => {
   if(!dateValue.value){
@@ -39,10 +44,10 @@ function buildEdit(){
   return edit
 };
 
-function buildParagraph(){
+function buildParagraph(name){
   const p = document.createElement('p');
   
-  p.textContent = itemAdd.value;
+  p.textContent = name;
   
   return p
 };
@@ -50,15 +55,13 @@ function buildParagraph(){
 function buildClose(){
   const close = document.createElement('button'),
         length = listGoal.querySelectorAll('li').length;
-
-  // close.innerHTML = '<img src="img/close_big.svg" alt="Close habit">';
+        
   close.textContent= 'Remove'
 
   close.setAttribute('data-id', length + 1);
 
   close.addEventListener('click', (e) => {
     const element = listGoal.querySelector(`#item-${e.target.getAttribute('data-id')}`);
-    console.log(element)
     element.remove();
     e.target.remove();
   })
@@ -66,10 +69,10 @@ function buildClose(){
   return close;
 }
 
-function createElement() {
+function createElement(task) {
   const li = document.createElement('li'),
         inputEdit = document.createElement('input'),
-        p = buildParagraph(),
+        p = buildParagraph(task.name),
         close = buildClose(),
         btn = buildBtn(),
         edit = buildEdit(),
@@ -89,6 +92,35 @@ function createElement() {
   itemAdd.value = '';
 };
 
-btnAdd.addEventListener('click', () => {
-  createElement();
+btnAdd.addEventListener('click', (e) => {
+  addTask(itemAdd.value, dateValue.value);
+  itemAdd.value = '';
 });
+
+function dateStorage() {
+  let value = dateValue.value;
+  const dataObj = JSON.stringify({ value });
+
+  localStorage.setItem('dateValue', dataObj);
+};
+
+function addTask(name, date) {
+  tasks.push({name, date});
+  renderTask();
+};
+
+function renderTask() {
+  unmountTasks();
+
+  const date = dateValue.value
+  tasks.filter((item) => {
+    return item.date == date
+  }).forEach((item) => {
+    createElement(item);
+  })
+
+};
+
+function unmountTasks() {
+  document.querySelectorAll('.list__goals').forEach(item => {item.remove()})
+}
