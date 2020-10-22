@@ -4,8 +4,11 @@ const modalGoal = document.querySelector('.modal--goal'),
       listGoal = document.querySelector('.field__list'),
       dateValue = document.querySelector('.date__value'),
       btnAdd = document.querySelector('.card__btn'),
-      itemAdd = document.querySelector('.card__field'),
-      tasks = [];
+      itemAdd = document.querySelector('.card__field');
+
+let tasks = [];
+
+window.onload = recoveryTask();
 
 dateValue.addEventListener('change', () => {
   renderTask();
@@ -58,18 +61,20 @@ function buildClose(){
         
   close.textContent= 'Remove'
 
-  close.setAttribute('data-id', length + 1);
+  close.setAttribute('data-id', length);
 
   close.addEventListener('click', (e) => {
-    const element = listGoal.querySelector(`#item-${e.target.getAttribute('data-id')}`);
+    const element = document.querySelector(`#item-${e.target.getAttribute('data-id')}`);
     element.remove();
     e.target.remove();
+    tasks.splice(element.id.replace("item-",""), 1)
+    localStorage.setItem('tasks', JSON.stringify(tasks))
   })
 
   return close;
 }
 
-function createElement(task) {
+function createElement(task, index) {
   const li = document.createElement('li'),
         inputEdit = document.createElement('input'),
         p = buildParagraph(task.name),
@@ -82,9 +87,9 @@ function createElement(task) {
     p.remove();
     li.prepend(inputEdit);
   });
-      
+
   li.classList.add('list__goals');
-  li.id = `item-${length + 1}`;
+  li.id = `item-${index}`;
 
   li.append(p, btn, edit, close)
   listGoal.append(li);
@@ -97,16 +102,11 @@ btnAdd.addEventListener('click', (e) => {
   itemAdd.value = '';
 });
 
-function dateStorage() {
-  let value = dateValue.value;
-  const dataObj = JSON.stringify({ value });
-
-  localStorage.setItem('dateValue', dataObj);
-};
-
 function addTask(name, date) {
   tasks.push({name, date});
   renderTask();
+
+  localStorage.setItem('tasks', JSON.stringify(tasks))
 };
 
 function renderTask() {
@@ -115,12 +115,24 @@ function renderTask() {
   const date = dateValue.value
   tasks.filter((item) => {
     return item.date == date
-  }).forEach((item) => {
-    createElement(item);
+  }).forEach((item, index) => {
+    createElement(item, index);
   })
 
 };
 
 function unmountTasks() {
   document.querySelectorAll('.list__goals').forEach(item => {item.remove()})
+}
+
+function recoveryTask() {
+  const value = JSON.parse(localStorage.getItem('tasks'));
+  if(localStorage.getItem('tasks')){
+    tasks = value.reduce(
+      (accumulator, currentValue ) => accumulator.concat(currentValue),
+      []
+      )
+      console.log(tasks)
+  }
+  renderTask()
 }

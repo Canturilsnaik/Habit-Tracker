@@ -37,6 +37,7 @@ body {
 
 .modal__p {
   cursor: pointer;
+  z-index: 1;
 }
 
 .modal--goal {
