@@ -77,16 +77,25 @@ function buildClose(){
 function createElement(task, index) {
   const li = document.createElement('li'),
         inputEdit = document.createElement('input'),
-        p = buildParagraph(task.name),
         close = buildClose(),
         btn = buildBtn(),
         edit = buildEdit(),
         length = listGoal.querySelectorAll('li').length;
 
+let p = buildParagraph(task.name);
   edit.addEventListener('click', () => {
     p.remove();
     li.prepend(inputEdit);
   });
+
+  inputEdit.addEventListener('keyup', (e) => {
+    if(e.code !== 'Enter') return
+    inputEdit.remove();
+    p = buildParagraph(inputEdit.value);
+    li.prepend(p);
+    task.name = inputEdit.value
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+  })
 
   li.classList.add('list__goals');
   li.id = `item-${index}`;
@@ -132,7 +141,6 @@ function recoveryTask() {
       (accumulator, currentValue ) => accumulator.concat(currentValue),
       []
       )
-      console.log(tasks)
   }
   renderTask()
 }
