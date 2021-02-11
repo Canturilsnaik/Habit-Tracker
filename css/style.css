@@ -8,6 +8,8 @@
 body {
   background: var(--primary-color);
   font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: grayscale;
   color: var(--font-color);
 
 }
