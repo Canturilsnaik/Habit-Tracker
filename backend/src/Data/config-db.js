@@ -1,19 +1,14 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:3000/', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
-
-const userSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now()
+mongoose.connect(process.env.HOST, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true 
+}, (err) => {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log('Inside the database')
   }
 })
+
