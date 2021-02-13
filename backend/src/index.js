@@ -1,8 +1,14 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const port = process.env.PORT || 3000;
+const routes = require('./routes');
+require('dotenv').config();
 
-app.get('/', (req, res) => {
-  return res.json({message: 'It works'})
+app.use(bodyParser.json());
+
+app.use(routes);
+
+app.listen(port, () => {
+  console.log('Success!!')
 })
-
-app.listen(3000)
