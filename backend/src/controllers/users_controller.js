@@ -1,8 +1,20 @@
-const mongoose = require('mongoose')
-const user = require('../models/users');
+const mongoose = require('mongoose');
+const users = require('../models/users');
 
 module.exports = {
-  create(req, res) {
+  index(req, res) {
+    res.json({message: 'Koe'})
+  },
+
+ async login(req, res) {
     const { email, password } = req.body;
+
+    let user = await users.findOne({ email });
+
+    if(!user) {
+      return res.status(400).send({error: 'User not found'});
+    }
+
+    res.send({ user })
   }
 }
