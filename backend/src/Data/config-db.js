@@ -1,14 +1,17 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.HOST, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true 
+const url = 'mongodb://localhost:27017/';
+
+mongoose.connect(url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
 }, (err) => {
   if (err) {
-    console.log(err)
+    console.log(err);
   } else {
-    console.log('Inside the database')
+    console.log('Inside the database');
   }
-})
+});
 
+module.exports = mongoose;
