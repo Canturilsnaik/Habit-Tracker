@@ -7,4 +7,6 @@ routes.get('/', (req, res) => res.json({ message: 'It works' }));
 
 routes.post('/register', usersController.register);
 
+routes.post('/login', usersController.login);
+
 module.exports = routes;
