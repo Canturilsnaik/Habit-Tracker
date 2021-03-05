@@ -42,7 +42,7 @@ function buildBtn(){
 
 function buildEdit(){
   const edit = document.createElement('figure');
-  edit.innerHTML = '<img src="img/edit.svg" alt="Edit Habit">';
+  edit.innerHTML = '<img src="img/edit.svg" class="edit" alt="Edit Habit">';
 
   return edit
 };
@@ -59,7 +59,8 @@ function buildClose(){
   const close = document.createElement('button'),
         length = listGoal.querySelectorAll('li').length;
         
-  close.textContent= 'Remove'
+  close.classList.add('remove-btn');
+  close.textContent = 'Remove';
 
   close.setAttribute('data-id', length);
 
