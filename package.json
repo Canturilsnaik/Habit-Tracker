@@ -1,0 +1,24 @@
+{
+  "name": "habit-tracker",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\">Habit Tracker</h1>",
+  "main": "HabitTracker.js",
+  "dependencies": {
+    "chart.js": "^2.9.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ItaloCanturil/Habit-Tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ItaloCanturil/Habit-Tracker/issues"
+  },
+  "homepage": "https://github.com/ItaloCanturil/Habit-Tracker#readme"
+}

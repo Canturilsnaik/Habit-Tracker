@@ -35,14 +35,14 @@ closeModal.addEventListener('click', () => {
 function buildBtn(){
   const btn = document.createElement('figure');
 
-  btn.innerHTML = `<img src="./img/download_done.svg" alt="Arrow done">`;
+  btn.innerHTML = `<img src="src/assets/download_done.svg" alt="Arrow done">`;
 
   return btn;
 };
 
 function buildEdit(){
   const edit = document.createElement('figure');
-  edit.innerHTML = '<img src="img/edit.svg" class="edit" alt="Edit Habit">';
+  edit.innerHTML = '<img src="src/assets/edit.svg" class="edit" alt="Edit Habit">';
 
   return edit
 };
